@@ -1,0 +1,32 @@
+<h2>Submit a form:</h2>
+Name: <input type="text" [formControl]="name">
+Email: <input type="email" [formControl]="email">
+Password: <input type="text" [formControl]="password">
+
+
+@if (name.invalid && (name.dirty && name.touched)) {
+  <div>
+    @if (name.hasError("required")) {
+      <p>Name is required!</p>
+    }
+  </div>
+}
+
+@if (email.invalid && (email.dirty && email.touched)) {
+  <div>
+    @if (email.hasError("email")) {
+      <p>Incorrect email!</p>
+    }
+  </div>
+}
+
+@if (password.invalid && (password.dirty && password.touched)) {
+  <div>
+    @if (password.hasError("minLength")) {
+      <p>Password has to be 8 chars long!</p>
+    }
+    @if (password.hasError("required")) {
+      <p>Password is required!</p>
+    }
+  </div>
+}
